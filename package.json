@@ -1,0 +1,28 @@
+{
+  "name": "livebook",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "set NODE_EXTRA_CA_CERTS=C:/Users/mobal/AppData/Local/mkcert/rootCA.pem && next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "15.3.4",
+    "next-intl": "^4.3.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.60.0",
+    "scss": "^0.2.4"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.4",
+    "typescript": "^5"
+  }
+}

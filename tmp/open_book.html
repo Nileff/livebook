@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Открытие книги реалистично</title>
+  <style>
+    body {
+      margin: 0;
+      background: #ddd;
+      height: 100vh;
+      display: flex;
+      flex-flow: row wrap;
+      padding: 40px;
+      gap: 40px;
+    }
+
+    .bookWrapper {
+      position: relative;
+      width: 240px;
+      height: 320px;
+      perspective: 2000px;
+    }
+
+    .spine {
+      position: absolute;
+      width: 16px;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: linear-gradient(to right, #253444, #2C3E50, #253444, #2C3E50);
+    }
+
+    .book {
+      position: absolute;
+      width: 224px;
+      height: 100%;
+      top: 0;
+      right: 0;
+      perspective: 1000px;
+      perspective-origin: 10% 30%;
+    }
+
+    /* страница */
+    .page {
+      position: absolute;
+      width: 98%;
+      height: 98%;
+      left: 0;
+      top: 1%;
+      background: #eee;
+      color: #333;
+      font-size: 16px;
+      padding: 20px;
+      box-sizing: border-box;
+      z-index: 1;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* правая обложка (сзади) */
+    .cover-right {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: #2c3e50;
+      z-index: 0;
+    }
+
+    /* группа для вращения только обложки */
+    .cover-left-group {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      transition: transform 1s ease;
+      z-index: 3;
+    }
+
+    .book:hover .cover-left-group {
+      transform: rotateY(-130deg);
+    }
+
+    /* лицевая часть обложки */
+    .cover-left-front {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #2c3e50;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 5px 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .cover-left-front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* внутренняя сторона обложки */
+    .cover-left-inner {
+      position: absolute;
+      width: 98%;
+      height: 98%;
+      top: 1%;
+      left: 0;
+      background: #ccc;
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+<div class="bookWrapper">
+  <div class="spine"></div>
+  <div class="book">
+    <div class="cover-right"></div>
+    <div class="page">
+      Это первая страница книги. Здесь находится описание.
+      Обложка открывается, а страница остаётся неподвижной.
+      Это первая страница книги. Здесь находится описание.
+      Обложка открывается, а страница остаётся неподвижной.
+    </div>
+    <div class="cover-left-group">
+      <div class="cover-left-front">
+        <img src="./img/1.jpg" alt="test"/>
+      </div>
+      <div class="cover-left-inner"></div>
+    </div>
+  </div>
+</div>
+<div class="bookWrapper">
+  <div class="spine"></div>
+  <div class="book">
+    <div class="cover-right"></div>
+    <div class="page">
+      Это первая страница книги. Здесь находится описание.
+      Обложка открывается, а страница остаётся неподвижной.
+      Это первая страница книги. Здесь находится описание.
+      Обложка открывается, а страница остаётся неподвижной.
+    </div>
+    <div class="cover-left-group">
+      <div class="cover-left-front">
+        <img src="./img/2.jpg" alt="test"/>
+      </div>
+      <div class="cover-left-inner"></div>
+    </div>
+  </div>
+</div>
+<div class="bookWrapper">
+  <div class="spine"></div>
+  <div class="book">
+    <div class="cover-right"></div>
+    <div class="page">
+      Это первая страница книги. Здесь находится описание.
+      Обложка открывается, а страница остаётся неподвижной.
+      Это первая страница книги. Здесь находится описание.
+      Обложка открывается, а страница остаётся неподвижной.
+    </div>
+    <div class="cover-left-group">
+      <div class="cover-left-front">
+        <img src="./img/3.jpg" alt="test"/>
+      </div>
+      <div class="cover-left-inner"></div>
+    </div>
+  </div>
+</div>
+<div class="bookWrapper">
+  <div class="spine"></div>
+  <div class="book">
+    <div class="cover-right"></div>
+    <div class="page">
+      Это первая страница книги. Здесь находится описание.
+      Обложка открывается, а страница остаётся неподвижной.
+      Это первая страница книги. Здесь находится описание.
+      Обложка открывается, а страница остаётся неподвижной.
+    </div>
+    <div class="cover-left-group">
+      <div class="cover-left-front">
+        <img src="./img/4.webp" alt="test"/>
+      </div>
+      <div class="cover-left-inner"></div>
+    </div>
+  </div>
+</div>
+<div class="bookWrapper">
+  <div class="spine"></div>
+  <div class="book">
+    <div class="cover-right"></div>
+    <div class="page">
+      Это первая страница книги. Здесь находится описание.
+      Обложка открывается, а страница остаётся неподвижной.
+      Это первая страница книги. Здесь находится описание.
+      Обложка открывается, а страница остаётся неподвижной.
+    </div>
+    <div class="cover-left-group">
+      <div class="cover-left-front">
+        <img src="./img/5.jpg" alt="test"/>
+      </div>
+      <div class="cover-left-inner"></div>
+    </div>
+  </div>
+</div>
+<div class="bookWrapper">
+  <div class="spine"></div>
+  <div class="book">
+    <div class="cover-right"></div>
+    <div class="page">
+      Это первая страница книги. Здесь находится описание.
+      Обложка открывается, а страница остаётся неподвижной.
+      Это первая страница книги. Здесь находится описание.
+      Обложка открывается, а страница остаётся неподвижной.
+    </div>
+    <div class="cover-left-group">
+      <div class="cover-left-front">
+        <img src="./img/6.jpg" alt="test"/>
+      </div>
+      <div class="cover-left-inner"></div>
+    </div>
+  </div>
+</div>
+<script>
+  function getAverageColor(url, callback) {
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+
+    img.onload = function () {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = 1;                // только 1 пиксель по ширине
+      canvas.height = img.height;     // полная высота
+
+      // рисуем только левую полосу
+      ctx.drawImage(img, 0, 0, 1, img.height, 0, 0, 1, img.height);
+
+      const imageData = ctx.getImageData(0, 0, 1, img.height);
+      const data = imageData.data;
+
+      let r = 0, g = 0, b = 0;
+      const pixelCount = img.height;
+
+      for (let i = 0; i < data.length; i += 4) {
+        r += data[i];
+        g += data[i + 1];
+        b += data[i + 2];
+      }
+
+      r = Math.round(r / pixelCount);
+      g = Math.round(g / pixelCount);
+      b = Math.round(b / pixelCount);
+
+      callback(`rgb(${r}, ${g}, ${b})`);
+    }
+
+    img.src = url + '?t=' + Date.now();
+  }
+
+  function darkenColor(rgbString, percent) {
+    const match = rgbString.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+    if (!match) return rgbString;
+
+    let [_, r, g, b] = match.map(Number);
+    r = Math.max(0, Math.floor(r * (1 - percent / 100)));
+    g = Math.max(0, Math.floor(g * (1 - percent / 100)));
+    b = Math.max(0, Math.floor(b * (1 - percent / 100)));
+
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  document.querySelectorAll(".bookWrapper")
+    .forEach((el) => {
+      const img = el.getElementsByTagName('img')?.[0]
+      console.log(img)
+      if (img) {
+        const imgUrl = img.src;
+        getAverageColor(imgUrl, color => {
+          const color2 = darkenColor(color, 20)
+          el.querySelector('.spine').style.background =
+            `linear-gradient(to right, ${color2}, ${color}, ${color2}, ${color})`
+        })
+      }
+    })
+</script>
+</body>
+</html>

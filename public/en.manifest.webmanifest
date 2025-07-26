@@ -1,0 +1,20 @@
+{
+  "name": "LiveBook - Literary Portal",
+  "short_name": "LiveBook",
+  "start_url": "/en/",
+  "display": "standalone",
+  "background_color": "#fbf4e5",
+  "theme_color": "#122938",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
