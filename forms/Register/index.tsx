@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useFetch } from '@/hook/useFetch'
+import { useAuthContext } from '@/provider/auth'
 
 interface IRegisterFormInput {
   email: string
@@ -14,14 +15,11 @@ const Register = () => {
   const t = useTranslations('Auth')
   const { register, handleSubmit } = useForm<IRegisterFormInput>()
   const { callPost } = useFetch()
-  const onSubmit: SubmitHandler<IRegisterFormInput> = (data) => {
-    callPost(
-      '/auth/register/',
-      {
-        body: data,
-      },
-    )
-      .then(console.log)
+  const { setStatus, setUser } = useAuthContext()
+  const onSubmit: SubmitHandler<IRegisterFormInput> = (body) => {
+    setStatus('loading')
+    callPost('/auth/register/', { body })
+      .then(({ data }) => setUser(data))
   }
 
   return (

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { buildUrl } from '@/lib/buildUrl'
+import { buildUrl } from '@/lib/apiFetch'
 
 
 type ALLOWED_METHODS = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'HEAD'
@@ -7,7 +7,8 @@ type ALLOWED_METHODS = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'HEAD'
 export async function handler(method: ALLOWED_METHODS, req: NextRequest, params: Promise<{ path: string[] }>) {
   const { path } = await params
   const query = req.nextUrl.search
-  const targetUrl = `${buildUrl(path.join('/'), true)}${query}`
+  let targetUrl = await buildUrl(path.join('/'), true)
+  targetUrl = `${targetUrl}${query}`
 
   const headers = new Headers(req.headers)
   headers.delete('host')
@@ -25,13 +26,14 @@ export async function handler(method: ALLOWED_METHODS, req: NextRequest, params:
       ...(body && { duplex: 'half' }),
     })
 
-    // Создаём новые заголовки, копируя все кроме content-length, host, connection
     const proxyHeaders = new Headers(response.headers)
     proxyHeaders.delete('content-length')
     proxyHeaders.delete('content-encoding')
     proxyHeaders.delete('transfer-encoding')
     proxyHeaders.delete('connection')
     proxyHeaders.delete('keep-alive')
+    proxyHeaders.delete('server')
+    proxyHeaders.delete('x-powered-by')
 
     const buffer = Buffer.from(await response.arrayBuffer())
 
@@ -48,7 +50,6 @@ export async function handler(method: ALLOWED_METHODS, req: NextRequest, params:
   }
 }
 
-// Обработчики всех методов
 export async function GET(req: NextRequest, context: { params: Promise<{ path: string[] }> }) {
   return handler('GET', req, context.params)
 }

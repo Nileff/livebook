@@ -8,7 +8,7 @@ import Logo from '@/components/Logo'
 
 import styles from './layout.module.scss'
 
-const AuthLayout = async ({
+const PrivateLayout = async ({
   children,
   params,
 }: {
@@ -20,13 +20,16 @@ const AuthLayout = async ({
   const user = await getAuthUser(locale, cookieAdapter(allCookies))
 
   return (
-    <body className={styles.body}>
-      <Logo size={120}/>
-      <AuthProvider user={user} layoutType="auth">
+    <body>
+      <header className={styles.header}>
+        <Logo size={80}/>
+        test
+      </header>
+      <AuthProvider user={user} layoutType="main">
         {children}
       </AuthProvider>
     </body>
   )
 }
 
-export default AuthLayout
+export default PrivateLayout
