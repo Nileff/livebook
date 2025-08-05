@@ -4,7 +4,7 @@ import { buildUrl } from '@/lib/apiFetch'
 
 type ALLOWED_METHODS = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE' | 'HEAD'
 
-export async function handler(method: ALLOWED_METHODS, req: NextRequest, params: Promise<{ path: string[] }>) {
+async function handler(method: ALLOWED_METHODS, req: NextRequest, params: Promise<{ path: string[] }>) {
   const { path } = await params
   const query = req.nextUrl.search
   let targetUrl = await buildUrl(path.join('/'), true)

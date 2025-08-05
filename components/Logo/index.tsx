@@ -1,14 +1,12 @@
 import { ReactNode } from 'react'
 
 
-const Logo = ({
-  size
-}: { size?: number }):ReactNode => {
+const Logo = ({ className }: { className?: string }):ReactNode => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512 512"
-      height={size}
     >
       <path d="M494.34,330.05V92.69C504.54,89.72,512,80.31,512,69.15c0-13.54-10.98-24.52-24.52-24.52c-13.54,0-24.52,10.98-24.52,24.51
         l-188.79,72.8c-4.49-4.95-10.96-8.05-18.17-8.05c-7.2,0-13.68,3.11-18.17,8.05L49.04,69.14c0-13.54-10.98-24.52-24.52-24.52

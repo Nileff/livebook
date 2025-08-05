@@ -1,0 +1,19 @@
+.error {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  line-height: 1;
+}
+
+.code {
+  font-size: 90px;
+  font-weight: 700;
+}
+
+.message {
+  font-size: 32px;
+  font-weight: 500;
+}

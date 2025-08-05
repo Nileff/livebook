@@ -1,3 +1,22 @@
-.register {
-  max-width: 380px;
+.root {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 280px;
+  max-width: 100%;
+}
+
+.root h1 {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 32px;
+  line-height: 1;
+  font-family: var(--title-font), sans-serif;
+}
+
+.link {
+  display: flex;
+  align-self: flex-end;
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--accent-text-color);
 }

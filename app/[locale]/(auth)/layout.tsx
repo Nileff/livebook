@@ -4,7 +4,7 @@ import { getAuthUser } from '@/lib/auth'
 import { cookieAdapter } from '@/lib/cookie'
 import { AuthProvider } from '@/provider/auth'
 
-import Logo from '@/components/Logo'
+import AuthHeader from '@/components/AuthHeader'
 
 import styles from './layout.module.scss'
 
@@ -21,8 +21,8 @@ const AuthLayout = async ({
 
   return (
     <body className={styles.body}>
-      <Logo size={120}/>
       <AuthProvider user={user} layoutType="auth">
+        <AuthHeader/>
         {children}
       </AuthProvider>
     </body>

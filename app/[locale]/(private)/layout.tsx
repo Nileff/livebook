@@ -4,11 +4,11 @@ import { getAuthUser } from '@/lib/auth'
 import { cookieAdapter } from '@/lib/cookie'
 import { AuthProvider } from '@/provider/auth'
 
-import Logo from '@/components/Logo'
+import MainHeader from '@/components/MainHeader'
 
 import styles from './layout.module.scss'
 
-const PrivateLayout = async ({
+const MainLayout = async ({
   children,
   params,
 }: {
@@ -20,16 +20,15 @@ const PrivateLayout = async ({
   const user = await getAuthUser(locale, cookieAdapter(allCookies))
 
   return (
-    <body>
-      <header className={styles.header}>
-        <Logo size={80}/>
-        test
-      </header>
+    <body className={styles.body}>
       <AuthProvider user={user} layoutType="main">
-        {children}
+        <MainHeader />
+        <main className={styles.mainContent}>
+          {children}
+        </main>
       </AuthProvider>
     </body>
   )
 }
 
-export default PrivateLayout
+export default MainLayout

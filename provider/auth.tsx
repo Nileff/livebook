@@ -67,11 +67,11 @@ export function AuthProvider({
   useEffect(() => {
     if (['init', 'refresh', 'loading'].includes(status)) return
 
-    if (!user && layoutType === 'private') {
+    if (status === 'unauthorized' && layoutType === 'private') {
       push(`/${locale}`)
     }
 
-    if (user && layoutType === 'auth') {
+    if (status === 'authorized' && layoutType === 'auth') {
       push(`/${locale}`)
     }
   }, [status, user, layoutType, locale, push])

@@ -4,11 +4,17 @@ import { routing } from '@/i18n/routing'
 import { ReactNode } from 'react'
 import { getTranslations } from 'next-intl/server'
 import type { Metadata } from 'next'
-import { Inter, Noto_Sans } from 'next/font/google'
+import { Alegreya, Inter, Noto_Sans } from 'next/font/google'
 
-import '@/app/globals.scss'
+import '@/styles/globals.scss'
 
-
+const alegreya = Alegreya({
+  subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'],
+  weight: ['700'],
+  style: ['normal'],
+  variable: '--font-alegreya',
+  display: 'swap',
+})
 const inter = Inter({
   subsets: ['latin', 'latin-ext', 'cyrillic', 'cyrillic-ext'],
   weight: ['400', '500', '700'],
@@ -57,7 +63,7 @@ const LocaleLayout = async ({
   }
 
   return (
-    <html lang={locale} className={`${inter.variable} ${noto.variable}`}>
+    <html lang={locale} className={`${alegreya.variable} ${inter.variable} ${noto.variable}`}>
       <NextIntlClientProvider>
         {children}
       </NextIntlClientProvider>

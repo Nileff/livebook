@@ -32,7 +32,7 @@ const Register = () => {
         {t('pass')}
         <input type="password" {...register('password', { required: true })} />
       </label>
-      <button type="submit">{t('enter')}</button>
+      <button type="submit">{t('regEnter')}</button>
     </form>
   )
 }

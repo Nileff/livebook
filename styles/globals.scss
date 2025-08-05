@@ -1,18 +1,19 @@
 @use 'sass:color';
+@use '@/styles/variables' as *;
 
 :root {
   --background-color: #fbf4e5;
   --page-background-color: #f2e4c9;
-  $text-color: #122938;
   --main-text-color: #{$text-color};
   --light-text-color: #{color.mix(color.scale($text-color, $lightness: 30%), #555, 30%)};
+  --accent-text-color: #165c96;
   --book-background-color1: #3f5b70;
   --book-text-color1: #f9f9f7;
   --book-background-color2: #ab4736;
   --book-text-color2: #f9f9f7;
   --ui-font: var(--font-inter);
   --book-font: var(--font-noto-sans);
-  @debug color.scale($text-color, $lightness: 40%);
+  --title-font: var(--font-alegreya);
 }
 
 html,
@@ -56,5 +57,17 @@ form {
     font-size: 12px;
     font-weight: 500;
     color: var(--light-text-color);
+  }
+}
+
+@media ($desktop-media) {
+  .mobile:not(.desktop) {
+    display: none;
+  }
+}
+
+@media ($mobile-media) {
+  .desktop:not(.mobile) {
+    display: none;
   }
 }
