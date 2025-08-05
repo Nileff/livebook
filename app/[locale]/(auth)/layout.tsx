@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { cookies } from 'next/headers'
 import { getAuthUser } from '@/lib/auth'
 import { cookieAdapter } from '@/lib/cookie'
-import { AuthProvider } from '@/provider/auth'
+import { AuthProvider } from '@/providers/auth'
 
 import AuthHeader from '@/components/AuthHeader'
 

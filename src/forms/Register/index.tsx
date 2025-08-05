@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useFetch } from '@/hook/useFetch'
-import { useAuthContext } from '@/provider/auth'
+import { useAuthContext } from '@/providers/auth'
 
 interface IRegisterFormInput {
   email: string

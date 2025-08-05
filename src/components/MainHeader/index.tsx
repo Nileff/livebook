@@ -9,7 +9,7 @@ import Logo from '../Logo'
 
 import styles from './index.module.scss'
 import { Link } from '@/i18n/navigation'
-import { useAuthContext } from '@/provider/auth'
+import { useAuthContext } from '@/providers/auth'
 
 
 const MainHeader = () => {

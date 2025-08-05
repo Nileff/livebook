@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { cookies } from 'next/headers'
 import { getAuthUser } from '@/lib/auth'
 import { cookieAdapter } from '@/lib/cookie'
-import { AuthProvider } from '@/provider/auth'
+import { AuthProvider } from '@/providers/auth'
 
 import MainHeader from '@/components/MainHeader'
 
@@ -21,7 +21,7 @@ const MainLayout = async ({
 
   return (
     <body className={styles.body}>
-      <AuthProvider user={user} layoutType="main">
+      <AuthProvider user={user} layoutType="private">
         <MainHeader />
         <main className={styles.mainContent}>
           {children}
