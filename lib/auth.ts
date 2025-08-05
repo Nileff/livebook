@@ -10,7 +10,7 @@ export type User = {
   [key: string]: unknown
 }
 
-export async function getAuthUser(locale: string, cookies: CookieAdapter) {
+export async function getAuthUser(locale: string, cookies: CookieAdapter): Promise<User> {
   try {
     if (cookies.get('access_token_exist')) {
       const { data } = await apiFetch('/auth/verify/', undefined, locale)
@@ -26,5 +26,18 @@ export async function getAuthUser(locale: string, cookies: CookieAdapter) {
     return { authorized: false }
   } catch {
     return { authorized: false }
+  }
+}
+
+export async function logout(): Promise<User> {
+  try {
+    const { data } = await apiFetch('/auth/logout/', undefined)
+    return data as User
+  } catch {
+    return { authorized: false }
+  } finally {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('logout'))
+    }
   }
 }

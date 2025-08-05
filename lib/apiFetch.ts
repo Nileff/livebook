@@ -33,13 +33,15 @@ export async function buildUrl(url: string, isProxy: boolean) {
   return fullUrl + '/'
 }
 
-export async function apiFetch(url: string, options: ApiFetchOptions = {}, locale: string) {
+export async function apiFetch(url: string, options: ApiFetchOptions = {}, locale?: string) {
   const fullUrl = await buildUrl(url, false)
   const { body, headers: incomingHeaders, ...rest } = options
   const isServer = typeof window === 'undefined'
 
   const headers = new Headers(incomingHeaders)
-  headers.set('Accept-Language', locale)
+  if (locale) {
+    headers.set('Accept-Language', locale)
+  }
 
   if (isServer) {
     const cookieHeader = await getCookies()

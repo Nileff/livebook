@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl'
 import clsx from 'clsx'
 import { useState } from 'react'
+import { logout } from '@/lib/auth'
 
 import Logo from '../Logo'
 
@@ -32,7 +33,7 @@ const MainHeader = () => {
       </nav>
       {
         user?.authorized && (
-          <div className={clsx(styles.button, 'desktop')}>
+          <div className={clsx(styles.button, 'desktop')} onClick={logout}>
             {m('logout')}
           </div>
         )
@@ -64,7 +65,7 @@ const MainHeader = () => {
           </nav>
           {
             user?.authorized && (
-              <div className={styles.button}>
+              <div className={styles.button} onClick={logout}>
                 {m('logout')}
               </div>
             )
